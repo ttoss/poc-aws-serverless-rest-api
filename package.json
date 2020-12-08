@@ -1,0 +1,18 @@
+{
+  "name": "poc-aws-serverless-rest-api",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "carlin deploy"
+  },
+  "keywords": [],
+  "author": "Pedro Arantes <arantespp@gmail.com> (https://twitter.com/arantespp)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.64",
+    "carlin": "^0.10.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}
