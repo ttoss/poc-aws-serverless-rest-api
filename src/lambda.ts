@@ -1,16 +1,17 @@
 import type { ProxyHandler } from 'aws-lambda';
 import dayjs from 'dayjs';
+import moment from 'moment';
 
 export const proxyHandler: ProxyHandler = async (event, context) => {
   const { httpMethod, path } = event;
 
-  if (httpMethod === 'GET' && path === '/now') {
+  if (httpMethod === 'GET' && ['/now/dayjs', '/now/moment'].includes(path)) {
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'text/plain',
       },
-      body: String(dayjs()),
+      body: String(path === '/now/moment' ? moment() : dayjs()),
     };
   }
 
