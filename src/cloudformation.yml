@@ -56,6 +56,9 @@ Resources:
             Path: /{proxy+}
             RestApiId: !Ref ApiV1ServerlessApi
       Handler: index.proxyHandler
+      Layers:
+        - !ImportValue CarlinLambdaLayerDayjs1dot9dot7
+        - !ImportValue CarlinLambdaLayerMoment2dot29dot1
       Role: !GetAtt ApiV1ServerlessFunctionIAMRole.Arn
       Timeout: 600
 

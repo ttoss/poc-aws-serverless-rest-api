@@ -48,8 +48,20 @@ An overview of the [deploy algorithm](https://carlin.ttoss.dev/docs/Commands/dep
 
 ## Results
 
-Moment.js was chosen because its size. The bundled file has **690 kB** and, the zipped file, **116,3 kB**.
+Moment.js was chosen because its size. The bundled file has **690 kB** and, the zipped file, **116.3 kB**.
 
 It took about **79 seconds** the whole deployment process.
 
 ![carlin deploy command](/images/sc.png)
+
+## Adding Lambda Layers
+
+You may want to use [Lambda layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) to ignore some packages when Webpack are going to bundle the Lambda code. To do so, [**carlin** provides the command `carlin deploy lambda-layer`](https://carlin.ttoss.dev/docs/commands/deploy-lambda-layer) that automates the layers deployment. At the end, it returns the ARN and some exported name for each layer that can be added to the CloudFormation template:
+
+```yaml
+Layers:
+  - !ImportValue CarlinLambdaLayerDayjs1dot9dot7
+  - !ImportValue CarlinLambdaLayerMoment2dot29dot1
+```
+
+Now, the bundled file has **4.9 kB** and, the zipped file, **1.5 kB**.
